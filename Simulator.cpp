@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 
-Simulator::Simulator(unsigned int SEED) : generator(SEED){
+Simulator::Simulator(unsigned int SEED,double DX) : generator(SEED) , deltaX(DX/2.355){
     x0 = std::vector<double>(3,0);
     x1 = std::vector<double>(3,0);
     x2 = std::vector<double>(3,0);
@@ -10,6 +10,13 @@ Simulator::Simulator(unsigned int SEED) : generator(SEED){
     mu0 = std::vector<double>(3,0);
     mu1 = std::vector<double>(3,0);
     mu2 = std::vector<double>(3,0);
+
+    binsArr = std::vector<double>(nBins,0);
+    Histogram = std::vector<double>(nBins,0);
+
+    for(int i = 0;i < nBins;++i){
+        binsArr[i] = -1. + i*2./((double) nBins);
+    }
 
     cthArray = std::vector<double>(MAX_SIM,0);
 
@@ -59,13 +66,40 @@ void Simulator::DoTheThing(std::vector<double> &values){
 
         ++SimIter;
     }
+    CreateHistogram();
 }
 
 //--------------------------------------------------------------
 
-void Simulator::SaveRow(std::ofstream &data){
-    for(int i = 0;i < MAX_SIM;++i) data << cthArray[i] << " ";
-    data << std::endl;
+void Simulator::SaveRow(std::ofstream *data){
+    for(int i = 0;i < nBins;++i) (*data) << Histogram[i] << " ";
+    (*data) << std::endl;
+}
+
+//--------------------------------------------------------------
+
+void Simulator::CreateHistogram(){
+    double norm = 0;
+
+    //reset histogram
+    for(int i = 0;i < Histogram.size();++i) Histogram[i] = 0.;
+    
+    //fill histogram
+    for(auto cth : cthArray){
+        for(int i = 0;i < binsArr.size()-1;++i){
+            if(cth >= binsArr[i] && cth < binsArr[i+1]){
+                Histogram[i] += 1;
+                norm += 1.;
+                break;
+            }
+        }
+    }
+    
+    double binWidth = 2./((double) nBins);
+
+    //normalize histogram
+    for(int i = 0;i < Histogram.size();++i) Histogram[i] /= norm*binWidth;
+
 }
 
 //--------------------------------------------------------------
