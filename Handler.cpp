@@ -78,7 +78,6 @@ void Handler::Simulate(){
                 //Save Row in File
                 SIM.SaveRow(DATA.GetDataStream());
             }
-            if(thrNum == 0) std::cout << "d0 " << d0 << " -> d12 " << d12 << " done" << std::endl;
             //close file again
             DATA.CLOSE();
         }
