@@ -16,7 +16,7 @@ class Handler{
 private:
 
     const int nBinsD12 = 300;
-    const int nBinsTheta = 90;
+    const int nBinsTheta = 180;
 
     const double d12MAX = 600;
     const double THETA_MAX = 180;
