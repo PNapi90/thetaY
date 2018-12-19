@@ -39,7 +39,7 @@ void Simulator::DoTheThing(std::vector<double> &values){
 
     //x2
     x2[0] = d01 + d12*cos(theta);
-    x2[1] = d01 + d12*sin(theta);
+    x2[1] = d12*sin(theta);
 
     double norm1 = 0;
     double norm2 = 0;
