@@ -25,6 +25,7 @@ void Threader::RunSimulation(double deltaX){
     std::vector<int> binSize(2,0);
 
     int delim = 600/nThr;
+    delim = 1;
 
     for(int i = 0;i < nThr;++i){
         dRange[0] = dRange[1];

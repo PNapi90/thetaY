@@ -78,10 +78,17 @@ void Handler::Simulate(){
                 //Save Row in File
                 SIM.SaveRow(DATA.GetDataStream());
             }
+
+            if(thrNum == 0){
+                std::cout << "\r";
+                std::cout << "Distance d12 " << d12 << " in thread 0 done\t\t\t\t";
+                std::cout.flush();
+            }
             //close file again
             DATA.CLOSE();
         }
         if(thrNum == 0){
+            std::cout << std::endl;
             std::cout << "Distance d0 " << d0 << " in thread 0 done" << std::endl;
         }
     }

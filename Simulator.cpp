@@ -31,7 +31,7 @@ void Simulator::DoTheThing(std::vector<double> &values){
 
     d01 = values[0];
     d12 = values[1];
-    theta = values[2];
+    theta = values[2]*M_PI/180.;
 
     //set vectors x1 and x2 (x0 = 0)
     //x1

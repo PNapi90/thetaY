@@ -6,7 +6,7 @@
     "configurations": [
         
         {
-            "name": "(gdb) Launch",
+            "name": "(lldb) Launch",
             "type": "cppdbg",
             "request": "launch",
             //"preLaunchTask": "FBT",
@@ -16,16 +16,16 @@
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "MIMode": "gdb",
-            "miDebuggerPath": "/usr/bin/gdb",
-            "setupCommands": [
+            "MIMode": "lldb",
+            //"miDebuggerPath": "/usr/bin/gdb",
+            /*"setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
-            ]
-            //"miDebuggerPath": "/Users/Philipp/.vscode/extensions/ms-vscode.cpptools-0.20.1/debugAdapters/lldb/bin/lldb-mi"
+            ]*/
+            "miDebuggerPath": "/Users/Philipp/.vscode/extensions/ms-vscode.cpptools-0.20.1/debugAdapters/lldb/bin/lldb-mi"
         }
     ]
 }
