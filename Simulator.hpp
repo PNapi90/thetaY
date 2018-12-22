@@ -12,7 +12,7 @@ class Simulator{
 private:
 
     const int MAX_SIM = 100000;
-    const int nBins = 100;
+    const int nBins = 180;
 
     double deltaX;
 
