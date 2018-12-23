@@ -25,11 +25,10 @@ void Threader::RunSimulation(double deltaX){
     std::vector<int> binSize(2,0);
 
     int delim = 600/nThr;
-    delim = 1;
 
     for(int i = 0;i < nThr;++i){
-        dRange[0] = 200;//dRange[1];
-        dRange[1] = 201;//dRange[0] + delim;
+        dRange[0] = dRange[1];
+        dRange[1] = dRange[0] + delim;
         dRange[2] = delim;
         ThreadObjects.push_back(std::make_shared<Handler>(dRange,binSize,
                                                           (unsigned int) i ,
