@@ -73,6 +73,8 @@ void Handler::Simulate(){
                 TmpVec[1] = d12;
                 TmpVec[2] = theta;
 
+                std::cout << "Simulating " << d0 << " " << d12 << " " << theta << std::endl;
+
                 //simulate data for set d0,d12,theta
                 SIM.DoTheThing(TmpVec);
                 //Save Row in File
