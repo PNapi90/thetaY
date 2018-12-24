@@ -98,8 +98,10 @@ void Simulator::CreateHistogram(){
     double binWidth = 2./((double) nBins);
 
     //normalize histogram
-    for(int i = 0;i < Histogram.size();++i) Histogram[i] /= norm*binWidth;
-
+    if(norm > 0)
+    {
+        for(int i = 0;i < Histogram.size();++i) Histogram[i] /= norm*binWidth;
+    }
 }
 
 //--------------------------------------------------------------
