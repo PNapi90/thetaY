@@ -34,6 +34,7 @@ void Threader::RunSimulation(double deltaX){
                                                           (unsigned int) i ,
                                                           i,deltaX));
     }
+    std::cout << "- - - - - - - - - - - - - - - - - - - - - - - - -" << std::endl;
     std::thread t[nThr];
     for(int i = 0;i < nThr;++i) t[i] = ThreadObjects[i]->threading();
     for (int i = 0; i < nThr; ++i) t[i].join();
