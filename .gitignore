@@ -2,4 +2,7 @@
 *.o
 *.txt
 d0s/*
+d0/
+d0s_4s/*
+d0s_4s/
 thetaY
