@@ -50,7 +50,7 @@ void DataParser::LOAD(double d0Current){
         return;
     }
 
-    Filename_Folder = "d0s_4s/d0_" + std::to_string(((int) d0Current)) + "/";
+    Filename_Folder = "d0s/d0_" + std::to_string(((int) d0Current)) + "/";
 } 
 
 //--------------------------------------------------------------
