@@ -16,10 +16,10 @@ class Handler{
 private:
 
     const int nBinsD12 = 600;
-    const int nBinsTheta = 180;
+    const int nBinsTheta = 181;
 
     const double d12MAX = 600;
-    const double THETA_MAX = 180;
+    const double THETA_MAX = 181;
     const double THETA_MIN = 0;
 
     int Min_Range, Max_Range, nBinsd01;

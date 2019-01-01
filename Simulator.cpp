@@ -14,8 +14,10 @@ Simulator::Simulator(unsigned int SEED,double DX) : generator(SEED) , deltaX(DX/
     binsArr = std::vector<double>(nBins,0);
     Histogram = std::vector<double>(nBins,0);
 
+    double delta = 2;
+
     for(int i = 0;i < nBins;++i){
-        binsArr[i] = -1. + i*2./((double) nBins);
+        binsArr[i] = -1. + i*delta/((double) nBins);
     }
 
     cthArray = std::vector<double>(MAX_SIM,0);
