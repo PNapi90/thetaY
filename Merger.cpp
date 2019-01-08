@@ -81,7 +81,7 @@ void Merger::SaveBlock(int iterator)
 
     SAVER.close();
 
-    if(iterator % 100 == 0) std::cout << name << " done" << std::endl;
+    //if(iterator % 100 == 0) std::cout << name << " done" << std::endl;
 }
 
 //---------------------------------------
