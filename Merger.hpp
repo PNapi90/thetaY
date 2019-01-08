@@ -21,7 +21,7 @@ private:
     std::vector<std::vector<double> > DataBlock;
     std::vector<double> Norm;
 
-    void SaveBlock();
+    void SaveBlock(int);
     
     void FATAL_Exit(std::string fileName);
 
@@ -32,7 +32,7 @@ public:
            int _sigX);
     ~Merger();
 
-    void LOAD();
+    void LOAD(int);
 
 
 

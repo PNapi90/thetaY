@@ -16,7 +16,7 @@ Merger::~Merger()
 
 //---------------------------------------
 
-void Merger::LOAD()
+void Merger::LOAD(int iterator)
 {
     std::ifstream DATA;
     std::string fileName,line;
@@ -55,7 +55,7 @@ void Merger::LOAD()
         for(int j = 0;j < 101;++j) DataBlock[i][j] /= Norm[i];
     }
 
-    SaveBlock();
+    SaveBlock(iterator);
 }
 
 //---------------------------------------
@@ -68,7 +68,7 @@ void Merger::FATAL_Exit(std::string fileName)
 
 //---------------------------------------
 
-void Merger::SaveBlock()
+void Merger::SaveBlock(int iterator)
 {
     std::string name = "d0_tmp/d0_"+FOLDER + "/d12_" + std::to_string(Start);
     std::ofstream SAVER(name);
@@ -81,7 +81,7 @@ void Merger::SaveBlock()
 
     SAVER.close();
 
-    std::cout << name << " done" << std::endl;
+    if(iterator % 100 == 0) std::cout << name << " done" << std::endl;
 }
 
 //---------------------------------------

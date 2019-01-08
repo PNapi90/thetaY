@@ -64,7 +64,7 @@ int main(int argc,char** argv)
         iter += d12_Merge;
     }
 
-    for(int i = 0;i < Q.size();++i) Q[i]->LOAD();
+    for(int i = 0;i < Q.size();++i) Q[i]->LOAD(i);
     
 
     std::cout << "d0_" << d0 << " done" << std::endl;
