@@ -2,7 +2,7 @@
 
 //-------------------------------
 
-D0_Merger::D0_Merger(std::vector<int> &Range,std::string _d12) : Start(Range[0]) , End(Range[1]) , d12(_d12)
+D0_Merger::D0_Merger(std::vector<int> &Range, std::string _d12, int _s) : Start(Range[0]), End(Range[1]), d12(_d12), sigmaX_s(std::to_string(_s))
 {
     DataBlock = std::vector<std::vector<double> >(181,std::vector<double>(100,0));
     Norm = std::vector<double>(181,0);
@@ -26,7 +26,7 @@ void D0_Merger::LOAD()
 
     for(int i = Start;i < End;++i)
     {
-        fileName = "d0s/d0_tmp/d0_"+std::to_string(i) + "/d12_" + d12;
+        fileName = "d0_tmp/d0_"+std::to_string(i) + "/d12_" + d12;
         
         DATA.open(fileName);
         if(DATA.fail()) FATAL_Exit(fileName);
@@ -69,12 +69,18 @@ void D0_Merger::FATAL_Exit(std::string fileName)
 
 void D0_Merger::SaveBlock()
 {
-    std::string name = "d0s_4/d0_"+ std::to_string(Start) + "/d12_" + d12;
+    std::string name = "d0_Folder/d0s_" + sigmaX_s +"_4/d0_"+ std::to_string(Start) + "/d12_" + d12;
     std::ofstream SAVER(name);
 
-    for(int i = 0;i < 181;++i)
+    if(SAVER.fail())
     {
-        for(auto x : DataBlock[i]) SAVER << x << " ";
+        std::cerr << "Could not open " << name << std::endl;
+        exit(1);
+    }
+
+    for(auto DBlock : DataBlock)
+    {
+        for(auto x : DBlock) SAVER << x << " ";
         SAVER << std::endl;
     }
 

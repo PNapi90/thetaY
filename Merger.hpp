@@ -14,7 +14,7 @@ class Merger
 
 private:
 
-    int Start,End;
+    int Start,End,sigX;
 
     std::string FOLDER;
 
@@ -27,7 +27,9 @@ private:
 
 
 public:
-    Merger(std::vector<int> &Range,std::string Folder);
+    Merger(std::vector<int> &Range,
+           std::string Folder,
+           int _sigX);
     ~Merger();
 
     void LOAD();

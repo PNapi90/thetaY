@@ -12,7 +12,7 @@ class DataParser{
 
   private:
 
-    int x0,x1;
+    int x0,x1,sigX;
 
     bool firstFile;
    
@@ -23,7 +23,7 @@ class DataParser{
     std::string exString;
 
   public:
-    DataParser(std::vector<int> &dRange);
+    DataParser(std::vector<int> &dRange,int _sigX);
     ~DataParser();
 
     void OpenFile();

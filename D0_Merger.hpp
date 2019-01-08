@@ -16,7 +16,7 @@ private:
     
     int Start,End;
 
-    std::string d12;
+    std::string d12, sigmaX_s;
 
     std::vector<std::vector<double> > DataBlock;
     std::vector<double> Norm;
@@ -27,7 +27,9 @@ private:
 
 
 public:
-    D0_Merger(std::vector<int> &Range,std::string _d12);
+    D0_Merger(std::vector<int> &Range,
+              std::string _d12,
+              int _s);
     ~D0_Merger();
 
     void LOAD();

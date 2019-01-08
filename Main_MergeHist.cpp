@@ -13,6 +13,9 @@ int main(int argc,char** argv)
     int d0 = 0;
     bool d0Flag = false;
 
+    int sigX = 5;
+    bool sigXFlag = false;
+
     for(int i = 0;i < argc;++i){
         if(std::string(argv[i]) == "-d"){
             d0Flag = true;
@@ -21,6 +24,17 @@ int main(int argc,char** argv)
         if(d0Flag){
             d0 = std::stoi(std::string(argv[i]));
             d0Flag = false;
+            continue;
+        }
+        if (std::string(argv[i]) == "-s")
+        {
+            sigXFlag = true;
+            continue;
+        }
+        if (sigXFlag)
+        {
+            sigX = std::stoi(std::string(argv[i]));
+            sigXFlag = false;
             continue;
         }
     }
@@ -45,7 +59,7 @@ int main(int argc,char** argv)
         Range[0] = iter;
         Range[1] = iter + d12_Merge;
 
-        Q.push_back(std::make_shared<Merger>(Range,d0_String));
+        Q.push_back(std::make_shared<Merger>(Range,d0_String,sigX));
 
         iter += d12_Merge;
     }
