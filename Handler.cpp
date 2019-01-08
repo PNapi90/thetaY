@@ -22,13 +22,13 @@ Handler::Handler(std::vector<int> &dRange,std::vector<int> &binSize,
 
 //--------------------------------------------------------------
 
-Handler::~Handler(){
-
-}
+Handler::~Handler()
+{}
 
 //--------------------------------------------------------------
 
-void Handler::Simulate(){
+void Handler::Simulate()
+{
     //loop over d0 range
 
     std::vector<double> d0s(nBinsd01,0);

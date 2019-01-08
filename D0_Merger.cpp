@@ -4,8 +4,8 @@
 
 D0_Merger::D0_Merger(std::vector<int> &Range,std::string _d12) : Start(Range[0]) , End(Range[1]) , d12(_d12)
 {
-    DataBlock = std::vector<std::vector<double> >(180,std::vector<double>(100,0));
-    Norm = std::vector<double>(180,0);
+    DataBlock = std::vector<std::vector<double> >(181,std::vector<double>(100,0));
+    Norm = std::vector<double>(181,0);
 }
 
 //-------------------------------
@@ -50,8 +50,8 @@ void D0_Merger::LOAD()
         DATA.clear();
     }
 
-    for(int i = 0;i < 180;++i){
-        for(int j = 0;j < 100;++j) DataBlock[i][j] /= Norm[i];
+    for(int i = 0;i < 181;++i){
+        for(int j = 0;j < 101;++j) DataBlock[i][j] /= Norm[i];
     }
 
     SaveBlock();
@@ -72,7 +72,7 @@ void D0_Merger::SaveBlock()
     std::string name = "d0s_4/d0_"+ std::to_string(Start) + "/d12_" + d12;
     std::ofstream SAVER(name);
 
-    for(int i = 0;i < 180;++i)
+    for(int i = 0;i < 181;++i)
     {
         for(auto x : DataBlock[i]) SAVER << x << " ";
         SAVER << std::endl;
