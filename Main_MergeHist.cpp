@@ -39,7 +39,7 @@ int main(int argc,char** argv)
         }
     }
 
-    std::cout << "Merging groups of 4 d12s in folder d0_" << d0 << std::endl; 
+    std::cout << "Merging groups of 4 d12s in folder d0_" << d0 << " with FWHM = " << sigX << " mm" << std::endl; 
     
     std::string d0_String = std::to_string(d0);
 
