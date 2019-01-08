@@ -8,6 +8,14 @@ DIRECTORY2="d0_Raw"
 if [ ! -d "$DIRECTORY1" ]
 then
     mkdir $DIRECTORY1
+    for i in {0..599}
+    do
+        if [ $(($i % 1)) -eq 0 ]
+        then
+            mkdir d0_tmp/d0_${i}
+            echo d0_tmp/d0_${i} created
+        fi
+    done
 fi
 
 if [ ! -d "$DIRECTORY9" ]
