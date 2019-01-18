@@ -32,7 +32,7 @@ std::ofstream* DataParser::GetDataStream()
 void DataParser::OPEN(double d12)
 {
     Filename = Filename_Folder + "d12_" + std::to_string((int) d12);
-    File.open(Filename);
+    File.open(Filename,std::ios::out | std::ios::binary);
 
     if (File.fail())
     {
@@ -52,7 +52,7 @@ void DataParser::LOAD(double d0Current)
         return;
     }
 
-    Filename_Folder = "d0_Raw/d0_"+std::to_string(sigX) +"/d0_" + std::to_string(((int) d0Current)) + "/";
+    Filename_Folder = "d0_Raw/d0s_"+std::to_string(sigX) +"/d0_" + std::to_string(((int) d0Current)) + "/";
 } 
 
 //--------------------------------------------------------------

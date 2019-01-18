@@ -4,7 +4,7 @@
 
 D0_Merger::D0_Merger(std::vector<int> &Range, std::string _d12, int _s) : Start(Range[0]), End(Range[1]), d12(_d12), sigmaX_s(std::to_string(_s))
 {
-    DataBlock = std::vector<std::vector<double> >(181,std::vector<double>(100,0));
+    DataBlock = std::vector<std::vector<double> >(181,std::vector<double>(101,0));
     Norm = std::vector<double>(181,0);
 }
 
@@ -24,13 +24,36 @@ void D0_Merger::LOAD()
     int fileIter = 0;
     double Value = 0;
 
+    std::vector<std::vector<double>> Values(181, std::vector<double>(101, 0));
+
     for(int i = Start;i < End;++i)
     {
         fileName = "d0_tmp/d0_"+std::to_string(i) + "/d12_" + d12;
-        
-        DATA.open(fileName);
-        if(DATA.fail()) FATAL_Exit(fileName);
 
+        DATA.open(fileName, std::ios::in | std::ios::binary);
+
+        if (DATA.fail())
+            FATAL_Exit(fileName);
+
+
+        for (auto VBlock : Values)
+        {
+            DATA.read(reinterpret_cast<char *>(&VBlock[0]),
+                      VBlock.size() * sizeof(VBlock[0]));
+        }
+
+        for (int j = 0; j < Values.size(); ++j)
+        {
+            for (int k = 0; k < Values[0].size(); ++k)
+            {
+                DataBlock[j][k] += Values[j][k];
+                Norm[j] += Values[j][k];
+            }
+        }
+
+        
+        
+        /*
         fileIter = 0;
 
         while(std::getline(DATA,line))
@@ -46,6 +69,7 @@ void D0_Merger::LOAD()
             }
             ++fileIter;
         }
+        */
         DATA.close();
         DATA.clear();
     }

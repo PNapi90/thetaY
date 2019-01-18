@@ -73,9 +73,12 @@ void Simulator::DoTheThing(std::vector<double> &values){
 
 //--------------------------------------------------------------
 
-void Simulator::SaveRow(std::ofstream *data){
-    for(int i = 0;i < nBins;++i) (*data) << Histogram[i] << " ";
-    (*data) << std::endl;
+void Simulator::SaveRow(std::ofstream *data)
+{
+
+    data->write(reinterpret_cast<char*>(&Histogram[0]),Histogram.size() * sizeof(Histogram[0]));
+    //for(int i = 0;i < nBins;++i) (*data) << Histogram[i] << " ";
+    //(*data) << std::endl;
 }
 
 //--------------------------------------------------------------
@@ -84,7 +87,8 @@ void Simulator::CreateHistogram(){
     double norm = 0;
 
     //reset histogram
-    for(int i = 0;i < Histogram.size();++i) Histogram[i] = 0.;
+    for(int i = 0;i < Histogram.size();++i)
+        Histogram[i] = 0.;
     
     //fill histogram
     for(auto cth : cthArray){

@@ -13,3 +13,4 @@ Program: $(OBJECTS) Main.o
 
 clean: 
 	rm -f *.o $(PROGRAM)
+	rm -f thetaY
