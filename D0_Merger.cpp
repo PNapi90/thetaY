@@ -70,7 +70,7 @@ void D0_Merger::FATAL_Exit(std::string fileName)
 void D0_Merger::SaveBlock()
 {
     std::string name = "d0_Folder/d0s_" + sigmaX_s +"_4/d0_"+ std::to_string(Start) + "/d12_" + d12;
-    std::ofstream SAVER(name);
+    std::ofstream SAVER(name,std::ios::out | std::ios::binary);
 
     if(SAVER.fail())
     {
@@ -80,8 +80,11 @@ void D0_Merger::SaveBlock()
 
     for(auto DBlock : DataBlock)
     {
-        for(auto x : DBlock) SAVER << x << " ";
-        SAVER << std::endl;
+        
+        SAVER.write(reinterpret_cast<char *>(&DBlock[0]),
+                    DBlock.size() * sizeof(DBlock[0]));
+        //for(auto x : DBlock) SAVER << x << " ";
+        //SAVER << std::endl;
     }
 
     SAVER.close();

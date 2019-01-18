@@ -4,7 +4,7 @@
 
 Handler::Handler(std::vector<int> &dRange,std::vector<int> &binSize,
                  unsigned int SEED,int _thrNum,double DX) 
-                 : DATA(dRange) , SIM(SEED,DX) , thrNum(_thrNum)
+                 : DATA(dRange,DX) , SIM(SEED,DX) , thrNum(_thrNum)
 {
     Min_Range = dRange[0];
     Max_Range = dRange[1];
