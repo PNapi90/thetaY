@@ -76,9 +76,9 @@ void Simulator::DoTheThing(std::vector<double> &values){
 void Simulator::SaveRow(std::ofstream *data)
 {
 
-    data->write(reinterpret_cast<char*>(&Histogram[0]),Histogram.size() * sizeof(Histogram[0]));
-    //for(int i = 0;i < nBins;++i) (*data) << Histogram[i] << " ";
-    //(*data) << std::endl;
+    //data->write(reinterpret_cast<char*>(&Histogram[0]),Histogram.size() * sizeof(Histogram[0]));
+    for(int i = 0;i < nBins;++i) (*data) << Histogram[i] << " ";
+    (*data) << std::endl;
 }
 
 //--------------------------------------------------------------

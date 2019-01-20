@@ -30,12 +30,12 @@ void D0_Merger::LOAD()
     {
         fileName = "d0_tmp/d0_"+std::to_string(i) + "/d12_" + d12;
 
-        DATA.open(fileName, std::ios::in | std::ios::binary);
+        DATA.open(fileName);//, std::ios::in | std::ios::binary);
 
         if (DATA.fail())
             FATAL_Exit(fileName);
 
-
+        /*
         for (auto VBlock : Values)
         {
             DATA.read(reinterpret_cast<char *>(&VBlock[0]),
@@ -50,10 +50,11 @@ void D0_Merger::LOAD()
                 Norm[j] += Values[j][k];
             }
         }
+        */
 
         
         
-        /*
+        
         fileIter = 0;
 
         while(std::getline(DATA,line))
@@ -69,7 +70,7 @@ void D0_Merger::LOAD()
             }
             ++fileIter;
         }
-        */
+        
         DATA.close();
         DATA.clear();
     }
@@ -94,7 +95,7 @@ void D0_Merger::FATAL_Exit(std::string fileName)
 void D0_Merger::SaveBlock()
 {
     std::string name = "d0_Folder/d0s_" + sigmaX_s +"_4/d0_"+ std::to_string(Start) + "/d12_" + d12;
-    std::ofstream SAVER(name,std::ios::out | std::ios::binary);
+    std::ofstream SAVER(name);//,std::ios::out | std::ios::binary);
 
     if(SAVER.fail())
     {
@@ -105,10 +106,10 @@ void D0_Merger::SaveBlock()
     for(auto DBlock : DataBlock)
     {
         
-        SAVER.write(reinterpret_cast<char *>(&DBlock[0]),
-                    DBlock.size() * sizeof(DBlock[0]));
-        //for(auto x : DBlock) SAVER << x << " ";
-        //SAVER << std::endl;
+        //SAVER.write(reinterpret_cast<char *>(&DBlock[0]),
+        //            DBlock.size() * sizeof(DBlock[0]));
+        for(auto x : DBlock) SAVER << x << " ";
+        SAVER << std::endl;
     }
 
     SAVER.close();
